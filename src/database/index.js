@@ -14,8 +14,6 @@ sequelize.authenticate()
 .then(() => { console.log('Database Ready')})
 .catch((error) => { console.error('Database Error', error)});
 
-sequelize.sync({ alter: true })
-.then(() => console.log('Models are synchronized.'))
-.catch((error) => { console.error('Models not sync.', error)})
+
 
 module.exports = sequelize;

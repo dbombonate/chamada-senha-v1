@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = require('../../database');
 
-class Departamento extends Model {};
+class Senha extends Model {};
 
 Senha.init({
   id: {
@@ -9,18 +9,20 @@ Senha.init({
     allowNull: false,
     autoIncrement: true
   },
-  name: {
-    type: DataTypes.STRING,
+  senha_status: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
     allowNull: false,
   },
-  depto_status: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
-    defaultValue: true,  
+  depto_key: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    defaultValue: '',  
   }
 }, {
   sequelize,
-  modelName: 'Departamento',
+  modelName: 'Senha',
+  timestamps: false,
 });
 
-module.exports = Departamento;
+module.exports = new Senha();
