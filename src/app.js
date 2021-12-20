@@ -3,8 +3,10 @@ const app = express();
 const routes = require('./routes');
 const database = require('./database');
 
-database.sync()
-.then((value) => console.log(value.options));
+(async () => {
+  database.sync()
+  .then((value) => console.log('Models sync OK.'))
+})();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
