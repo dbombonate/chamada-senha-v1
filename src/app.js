@@ -4,7 +4,7 @@ const routes = require('./routes');
 const database = require('./database');
 
 (async () => {
-  database.sync()
+  database.sync({ alter: true })
   .then((value) => console.log('Models sync OK.'))
 })();
 
