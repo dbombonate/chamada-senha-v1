@@ -7,7 +7,8 @@ Senha.init({
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    autoIncrement: true
+    autoIncrement: true,
+    primaryKey: true,
   },
   senha_status: {
     type: DataTypes.BOOLEAN,
@@ -25,4 +26,4 @@ Senha.init({
   timestamps: false,
 });
 
-module.exports = new Senha();
+module.exports = Senha;
