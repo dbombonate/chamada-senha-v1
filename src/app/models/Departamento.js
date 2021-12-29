@@ -7,7 +7,8 @@ Senha.init({
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    autoIncrement: true
+    autoIncrement: true,
+    primaryKey: true,
   },
   name: {
     type: DataTypes.STRING,
@@ -23,4 +24,4 @@ Senha.init({
   modelName: 'Departamento',
 });
 
-module.exports = new Departamento();
+module.exports = Departamento;
