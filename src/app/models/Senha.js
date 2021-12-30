@@ -15,6 +15,11 @@ Senha.init({
     defaultValue: false,
     allowNull: false,
   },
+  senha_priority: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
+  },
   depto_key: {
     type: DataTypes.INTEGER,
     allowNull: true,
