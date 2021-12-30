@@ -42,6 +42,12 @@ class SenhaController {
     try {
       const filaSenhas = await Senha.findAll({ where: { senha_status: false}});
       let proximaSenha = filaSenhas[0];
+      await Senha.update({ senha_status: true},{
+        where: {
+          id: proximaSenha.dataValues.id
+        }
+      });
+      console.log(proximaSenha);
       return res.status(200).send({ senha: proximaSenha.dataValues.id });
     } catch (error) {
       console.log(error.message);
