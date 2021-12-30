@@ -30,7 +30,7 @@ class SenhaController {
           [Op.lt]: id
         }
       }});
-      if(senhaNormalPendente || senhaPrioridadePendente) return res.status(403).send({ message: 'There are other pass to call before'});
+      if(senhaNormalPendente || senhaPrioridadePendente) return res.status(420).send({ message: 'There are other pass to call before'});
       return res.status(200).send({ senha: data.dataValues.id});
     } catch (error) {
       console.log(error.message);
@@ -40,14 +40,22 @@ class SenhaController {
 
   async chamaNovaSenha(req,res) {
     try {
-      const filaSenhas = await Senha.findAll({ where: { senha_status: false}});
-      let proximaSenha = filaSenhas[0];
+      const filaSenhaPrioridade = await Senha.findAll({ where: { 
+        senha_status: false,
+        senha_priority: true
+      }});
+      const filaSenhaNormal = await Senha.findAll({ where: { 
+        senha_status: false,
+        senha_priority: false
+      }});
+      if(filaSenhaNormal.length === 0 && filaSenhaPrioridade.length === 0) return res.status(200).send({ message: 'No password to call'});
+      let proximaSenha = ((filaSenhaNormal.length - filaSenhaPrioridade.length) < 5) ? filaSenhaPrioridade[0] : filaSenhaNormal[0];
+      proximaSenha = (filaSenhaPrioridade.length === 0) ? filaSenhaNormal[0] : proximaSenha;
       await Senha.update({ senha_status: true},{
         where: {
           id: proximaSenha.dataValues.id
         }
       });
-      console.log(proximaSenha);
       return res.status(200).send({ senha: proximaSenha.dataValues.id });
     } catch (error) {
       console.log(error.message);
