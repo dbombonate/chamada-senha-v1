@@ -23,12 +23,12 @@ Senha.init({
   depto_key: {
     type: DataTypes.INTEGER,
     allowNull: true,
-    defaultValue: '',  
+    defaultValue: '0',  
   }
 }, {
   sequelize,
   modelName: 'Senha',
-  timestamps: false,
+  timestamps: true,
 });
 
 module.exports = Senha;
