@@ -13,4 +13,18 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
 
+app.use((err, req, res, next) => {
+  if(err instanceof Error){
+    return res.status(400).send({
+      error: err.message
+    })
+  }
+
+  return res.status(500).send({
+    status: "error",
+    message: "Internal Server Error"
+  })
+
+});
+
 module.exports = app;
