@@ -49,10 +49,11 @@ Executar o projeto com comando npm start.
 
 ## Usage <a name = "usage"></a>
 
-O projeto possui 3 rotas somente:
+O projeto possui as rotas abaixo:
 
-POST: '/', enviar um json com conteúdo "id": number para chamar uma senha novamente, modo de chamada manual;
+POST: '/api/passwords', enviar um json sem conteúdo para criar uma senha de atendimento normal;
+POST: '/api/passwords', enviar um json com conteúdo "senha_priority": true para criar uma senha de atendimento preferencial;
 
-POST: '/novaSenha', enviar um json em branco para criar senha normal, e com conteúdo "senha_priority": true para criar uma senha de prioridade;
+GET: '/api/password', enviar para chamar a próxima senha disponível.
+GET: '/api/password/list/:option', enviar para listar as últimas senhas chamadas, na option passar o parâmetro "lastCalled", e adicionando a query "priority", serão listadas somente as senhas preferenciais.
 
-GET: '/proximaSenha', enviar para chamar a próxima senha disponível.
