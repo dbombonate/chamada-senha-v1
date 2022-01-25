@@ -1,14 +1,14 @@
-const Senha = require('../models/Senha');
+const Password = require('../models/Password');
 
 class CallNextPasswordService {
   async execute() {
 
-    const filaSenhaPrioridade = await Senha.findAll({ where: { 
+    const filaSenhaPrioridade = await Password.findAll({ where: { 
       senha_status: false,
       senha_priority: true
     }});
 
-    const filaSenhaNormal = await Senha.findAll({ where: { 
+    const filaSenhaNormal = await Password.findAll({ where: { 
       senha_status: false,
       senha_priority: false
     }});
@@ -21,7 +21,7 @@ class CallNextPasswordService {
 
     proximaSenha = (filaSenhaPrioridade.length === 0) ? filaSenhaNormal[0] : proximaSenha;
 
-    await Senha.update({ senha_status: true},{
+    await Password.update({ senha_status: true},{
       where: {
         id: proximaSenha.dataValues.id
       }

@@ -1,9 +1,9 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = require('../../database');
 
-class Senha extends Model {};
+class Password extends Model {};
 
-Senha.init({
+Password.init({
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -27,8 +27,8 @@ Senha.init({
   }
 }, {
   sequelize,
-  modelName: 'Senha',
+  modelName: 'Password',
   timestamps: true,
 });
 
-module.exports = Senha;
+module.exports = Password;

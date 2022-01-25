@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 
-const senhaController = require('./app/controllers/senhasController');
+//const senhaController = require('./app/controllers/senhasController');
 const newPasswordController = require('./app/controllers/NewPasswordController');
 const callNextPasswordController = require('./app/controllers/CallNextPasswordController');
 const listPasswordController = require('./app/controllers/ListPasswordsController');

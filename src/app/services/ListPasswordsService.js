@@ -1,4 +1,4 @@
-const Senha = require('../models/Senha');
+const Password = require('../models/Password');
 
 class ListPasswordsService {
   
@@ -7,7 +7,7 @@ class ListPasswordsService {
     let list;
 
     if (param.option === 'lastCalled' && query.priority) {
-      list = await Senha.findAll({
+      list = await Password.findAll({
         where: {
           senha_status: true,
           senha_priority: true
@@ -16,7 +16,7 @@ class ListPasswordsService {
       return list;
     }
 
-    list = await Senha.findAll({
+    list = await Password.findAll({
       where: {
         senha_status: true,
       }
