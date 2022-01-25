@@ -1,3 +1,4 @@
+require('express-async-errors');
 const express = require('express');
 const app = express();
 const routes = require('./routes');
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 app.use((err, req, res, next) => {
+  console.log("Passou aqui");
   if(err instanceof Error){
     return res.status(400).send({
       error: err.message
