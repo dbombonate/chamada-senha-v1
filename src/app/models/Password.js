@@ -20,7 +20,7 @@ Password.init({
     defaultValue: false,
     allowNull: false,
   },
-  depto_key: {
+  dept_key: {
     type: DataTypes.INTEGER,
     allowNull: true,
     defaultValue: '0',  
